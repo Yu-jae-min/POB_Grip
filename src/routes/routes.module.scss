@@ -8,8 +8,9 @@
   background-color: colors.$WHITE;
 
   .app {
-    background-color: colors.$BLACK;
+    position: relative;
     width: 414px;
     height: 736px;
+    background-color: colors.$BLACK;
   }
 }

@@ -1,0 +1,46 @@
+@use 'src/styles/constants/colors';
+
+.tabWrap {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 85px;
+  border-top: 1px solid colors.$GRAY7C;
+  bottom: 0;
+
+  .tabTitle {
+    color: colors.$WHITE;
+  }
+
+  .tabMenuWrap {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+    svg {
+      fill: colors.$WHITE;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 5px;
+    }
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: colors.$WHITE;
+    font-size: 16px;
+    text-decoration: none;
+
+    &.tabActive {
+      font-weight: bold;
+      color: colors.$HOTPINK;
+
+      svg {
+        fill: colors.$HOTPINK;
+      }
+    }
+  }
+}
