@@ -1,17 +1,17 @@
 {
-  "extends": [
+  "extends": [ // extends는 추가한 플러그인에서 사용할 규칙을 설정한다. 플러그인은 일련의 규칙 집합이며, 플러그인을 추가하여도 규칙은 적용되지 않는다. 규칙을 적용하기 위해서는 추가한 플러그인 중, 사용할 규칙을 추가해주어야 적용된다.
     "airbnb",
     "airbnb/hooks",
     "react-app",
     "prettier",
     "plugin:react/recommended"
   ],
-  "env": {
+  "env": { // 사전 정의된 전역 변수 사용을 정의
     "browser": true,
     "jasmine": true,
     "jest": true
   },
-  "settings": {
+  "settings": { // 모든 규칙에 의해 공유되는 설정을 하는 부분이며 import/resolver 는 eslint-plugin-import 의 경로 설정 옵션이다. 여기서 노드에서 사용되는 경로부분을 src 로 적어주면 절대경로를 인식하는 원리이다.
     "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
     "import/resolver": {
       "node": {
@@ -23,7 +23,7 @@
       "version": "detect"
     }
   },
-  "rules": {
+  "rules": { // ESLint에는 프로젝트에서 사용하는 규칙을 수정할 수 있다. 규칙을 변경하는 경우, 다음과 같은 방법으로 설정한다. "off" 또는 0" - 규칙을 사용하지 않음, "warn" 또는 1 - 규칙을 경고로 사용, "error" 또는 2 - 규칙을 오류로 사용
     "arrow-body-style": "off",
     "semi": ["warn", "never"],
     "react/function-component-definition": [
