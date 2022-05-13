@@ -20,9 +20,18 @@
 
     svg {
       fill: colors.$WHITE;
+      margin-bottom: 5px;
+    }
+
+    .searchIcon {
       width: 30px;
       height: 30px;
-      margin-bottom: 5px;
+    }
+
+    .heartIcon {
+      width: 30px;
+      height: 30px;
+      padding: 3px;
     }
   }
 

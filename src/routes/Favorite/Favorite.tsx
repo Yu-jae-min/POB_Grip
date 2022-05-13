@@ -1,12 +1,15 @@
-import React from 'react'
 import styles from './favorite.module.scss'
 
 const Favorite = () => {
   return (
-    <>
-      <h1>Favorite</h1>
-      <h1>Favorite</h1>
-    </>
+    <main>
+      <div className={styles.inputWrap}>
+        <form>
+          <input type='submit' />
+        </form>
+      </div>
+      <span>검색 결과가 없습니다.</span>
+    </main>
   )
 }
 

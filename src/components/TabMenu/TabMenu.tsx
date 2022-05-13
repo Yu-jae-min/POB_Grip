@@ -12,7 +12,11 @@ const TabMenu = () => {
         {MENU_LIST.map((tabMenu) => (
           <li key={tabMenu.link}>
             <NavLink to={tabMenu.link} className={({ isActive }) => cn({ [styles.tabActive]: isActive })}>
-              {tabMenu.icon === 'search' ? <SearchIcon /> : <HeartIcon />}
+              {tabMenu.icon === 'search' ? (
+                <SearchIcon className={styles.searchIcon} />
+              ) : (
+                <HeartIcon className={styles.heartIcon} />
+              )}
               {tabMenu.title}
             </NavLink>
           </li>
