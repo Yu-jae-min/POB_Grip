@@ -1,0 +1,112 @@
+@use '/src/styles/constants/colors';
+
+.modalWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  .modal {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 320px;
+    padding: 25px 15px 105px 15px;
+    background-color: colors.$WHITE;
+    border-radius: 7px;
+
+    .modalMovieImg {
+      min-width: 100%;
+      height: 200px;
+      margin-top: 20px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .modalDescWrap {
+      text-align: center;
+
+      .modalDescType {
+        display: inline-block;
+        padding: 2px 8px;
+        color: #ffffff;
+        background-color: colors.$GRAY7C;
+        font-size: 14px;
+        border-radius: 3px;
+      }
+
+      .modalDescTitle {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        width: 100%;
+        margin: 10px 0;
+        color: colors.$BLACK;
+        font-size: 20px;
+        font-weight: bold;
+        overflow: hidden;
+        white-space: normal;
+        line-height: 25px;
+      }
+
+      .modalDescYear {
+        color: colors.$GRAY7C;
+        font-size: 14px;
+      }
+    }
+
+    .detailMenuWrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      height: 80px;
+      background-color: colors.$BLACK;
+      border-top: 1px solid colors.$GRAY7C;
+
+      .detailBtnWrap {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .heartIcon,
+        .closeIcon {
+          width: 28px;
+          height: 28px;
+          padding: 3px;
+          margin-bottom: 7px;
+          fill: colors.$GRAY7C;
+          cursor: pointer;
+          border: 1px solid colors.$GRAY7C;
+          border-radius: 50%;
+        }
+
+        .heartIcon {
+          padding: 6px 0 4px 0;
+        }
+
+        .detailTitle {
+          color: colors.$WHITE;
+        }
+      }
+    }
+  }
+
+  .modalBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: colors.$BLACK;
+    opacity: 0.6;
+    z-index: -1;
+  }
+}

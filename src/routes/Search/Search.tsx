@@ -1,15 +1,22 @@
-import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
+import { useState, ChangeEvent, FormEvent } from 'react'
+import store from 'store'
+
+import MovieList from 'components/MovieList/MovieList'
+
+import { useRecoilState } from 'recoil'
+import { bookMarkList } from 'states/movie'
 
 import { getMovieListApi } from 'services/movie'
-import { MOCK_DATA } from 'services/mock'
 import { SearchAPIRes } from 'types/movie.d'
+import { MOCK_DATA } from 'services/mock'
 
 import styles from './search.module.scss'
-import { SearchIcon, StarIcon } from 'assets/svgs'
+import { SearchIcon } from 'assets/svgs'
 
 const Search = () => {
   const [inputValue, setInputValue] = useState<string>('')
   const [searchData, setSearchData] = useState<SearchAPIRes[]>()
+  const [bookmarkData, setBookmarkData] = useRecoilState(bookMarkList)
 
   const HandleInputValueSave = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.currentTarget.value)
@@ -30,12 +37,20 @@ const Search = () => {
     setInputValue('')
   }
 
+  const SaveMovieToLocalStorage = (movie: any) => {
+    const abc = bookmarkData.filter((el) => el.Title !== movie.Title)
+
+    setBookmarkData([...abc, movie])
+
+    store.set('bookmark', bookmarkData)
+  }
+
   return (
     <main className={styles.searchWrap}>
       <div className={styles.inputWrap}>
         <form onSubmit={InputValueSubmit}>
           <button type='submit' className={styles.submitBtn}>
-            <SearchIcon />
+            <SearchIcon className={styles.searchIcon} />
           </button>
           <input type='text' value={inputValue} placeholder='영화명을 검색해주세요.' onChange={HandleInputValueSave} />
         </form>
@@ -43,18 +58,8 @@ const Search = () => {
       <div className={styles.listWrap}>
         {searchData?.length ? (
           <ul className={styles.succeedWrap}>
-            {searchData.map(({ Title, Year, Type, imdbID, Poster }) => (
-              <li key={imdbID}>
-                <button type='button' onClick={() => alert('하이1')}>
-                  <img src={Poster} alt={Title} />
-                  <span>{Title}</span>
-                  <span>{Year}</span>
-                  <span>{Type}</span>
-                </button>
-                <button type='button' onClick={() => alert('하이2')}>
-                  <StarIcon />
-                </button>
-              </li>
+            {searchData.map((movie) => (
+              <MovieList key={movie.imdbID} movieDesc={movie} />
             ))}
           </ul>
         ) : (

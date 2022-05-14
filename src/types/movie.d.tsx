@@ -11,3 +11,11 @@ export interface SearchAPIRes {
   Type: string
   Poster: string
 }
+
+export interface MovieListProps {
+  movieDesc: SearchAPIRes
+}
+
+export interface ModalFunction extends MovieListProps {
+  HandleOpenModal: () => void
+}

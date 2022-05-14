@@ -1,0 +1,62 @@
+@use '/src/styles/constants/colors';
+
+.movieList {
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-between;
+
+  .detailBtn {
+    display: flex;
+
+    .movieImg {
+      min-width: 136px;
+      height: 150px;
+      border-radius: 5px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .descWrap {
+      text-align: start;
+      width: 200px;
+      padding: 0 15px;
+
+      .descType {
+        display: inline-block;
+        margin-top: 3px;
+        padding: 2px 8px;
+        color: #ffffff;
+        background-color: colors.$GRAY7C;
+        font-size: 14px;
+        border-radius: 3px;
+      }
+
+      .descTitle {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        width: 100%;
+        margin: 10px 0;
+        color: colors.$WHITE;
+        font-size: 20px;
+        font-weight: bold;
+        overflow: hidden;
+        white-space: normal;
+      }
+
+      .descYear {
+        color: colors.$GRAY7C;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .starIcon {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #7c7c7c;
+    border-radius: 50%;
+    padding: 3px;
+    fill: colors.$GRAY7C;
+  }
+}

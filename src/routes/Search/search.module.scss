@@ -26,7 +26,7 @@
       border-radius: 5px;
 
       .submitBtn {
-        svg {
+        .searchIcon {
           width: 25px;
           height: 25px;
           fill: colors.$GRAY7C;
@@ -42,24 +42,18 @@
 
   .listWrap {
     display: flex;
-    align-items: center;
     flex-direction: column;
     padding: 0 25px;
 
     .succeedWrap {
       display: flex;
-      align-items: center;
       flex-direction: column;
-      li {
-        margin: 10px 0;
-        background-color: red;
-      }
 
-      li:first-child {
+      .movieList:first-child {
         margin-top: 0;
       }
 
-      li:last-child {
+      .movieList:last-child {
         margin-bottom: 0;
       }
     }
@@ -67,6 +61,7 @@
     .failWrap {
       display: flex;
       justify-content: center;
+      align-items: center;
       flex-direction: column;
       height: 510px;
 
