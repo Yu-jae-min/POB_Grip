@@ -16,10 +16,10 @@ export interface MovieListProps {
   movieDesc: SearchAPIRes
 }
 
-export interface BookmarkProps extends MovieListProps {
-  HandleLocalStorageData: (Props: SearchAPIRes, event: any) => void
-}
+// export interface BookmarkProps extends MovieListProps {
+//   HandleLocalStorageData: (Props: SearchAPIRes, event: any) => void
+// }
 
-export interface ModalOpenProps extends BookmarkProps {
+export interface ModalOpenProps extends MovieListProps {
   HandleOpenModal: () => void
 }

@@ -1,0 +1,74 @@
+@use '/src/styles/constants/colors';
+
+.searchWrap {
+  height: 100%;
+  padding: 110px 0 115px 0;
+  overflow-y: scroll;
+
+  .inputWrap {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+    background-color: colors.$BLACK;
+    border-bottom: 1px solid colors.$GRAY7C;
+
+    form {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+      padding: 0 10px;
+      background-color: colors.$GRAY26;
+      border-radius: 5px;
+
+      .submitBtn {
+        .searchIcon {
+          width: 25px;
+          height: 25px;
+          fill: colors.$GRAY7C;
+        }
+      }
+
+      input {
+        padding: 0 10px;
+        color: colors.$WHITE;
+      }
+    }
+  }
+
+  .listWrap {
+    display: flex;
+    flex-direction: column;
+    padding: 0 25px;
+
+    .succeedWrap {
+      display: flex;
+      flex-direction: column;
+
+      .movieList:first-child {
+        margin-top: 0;
+      }
+
+      .movieList:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .failWrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 510px;
+
+      .fail {
+        color: colors.$WHITE;
+        font-size: 18px;
+      }
+    }
+  }
+}

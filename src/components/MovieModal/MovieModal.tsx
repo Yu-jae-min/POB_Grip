@@ -1,18 +1,13 @@
-import { useRecoilState } from 'recoil'
-import { bookMarkList } from 'states/movie'
+import useBookmarkList from 'hooks/useBookmarkList'
 
-import { ModalOpenProps, SearchAPIRes } from 'types/movie.d'
+import { ModalOpenProps } from 'types/movie.d'
 
 import styles from './movieModal.module.scss'
 import { CloseIcon, StarIcon } from 'assets/svgs'
 
-const MovieModal = ({ movieDesc, HandleOpenModal, HandleLocalStorageData }: ModalOpenProps) => {
+const MovieModal = ({ movieDesc, HandleOpenModal }: ModalOpenProps) => {
   const { Poster, Title, Year, Type } = movieDesc
-  const [bookmarkData, setBookmarkData] = useRecoilState(bookMarkList)
-
-  const BookmarkCheck = (movie: SearchAPIRes) => {
-    return bookmarkData.find(({ imdbID }) => imdbID === movie.imdbID)
-  }
+  const { HandleLocalStorageData, BookmarkCheck } = useBookmarkList()
 
   return (
     <div className={styles.modalWrap}>
