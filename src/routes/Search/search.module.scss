@@ -2,7 +2,7 @@
 
 .searchWrap {
   height: 100%;
-  padding-top: 80px;
+  padding: 110px 0 115px 0;
   overflow-y: scroll;
 
   .inputWrap {
@@ -26,8 +26,6 @@
       border-radius: 5px;
 
       .submitBtn {
-        // background: red;
-
         svg {
           width: 25px;
           height: 25px;
@@ -43,9 +41,39 @@
   }
 
   .listWrap {
-    color: colors.$WHITE;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 25px;
+
+    .succeedWrap {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      li {
+        margin: 10px 0;
+        background-color: red;
+      }
+
+      li:first-child {
+        margin-top: 0;
+      }
+
+      li:last-child {
+        margin-bottom: 0;
+      }
+    }
 
     .failWrap {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      height: 510px;
+
+      .fail {
+        color: colors.$WHITE;
+        font-size: 18px;
+      }
     }
   }
 }

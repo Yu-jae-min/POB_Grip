@@ -2,28 +2,14 @@ import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 
 import { getMovieListApi } from 'services/movie'
 import { MOCK_DATA } from 'services/mock'
-import { MovieAPIRes, SearchAPIRes } from 'types/movie.d'
+import { SearchAPIRes } from 'types/movie.d'
 
 import styles from './search.module.scss'
-import { SearchIcon } from 'assets/svgs'
+import { SearchIcon, StarIcon } from 'assets/svgs'
 
 const Search = () => {
-  const [inputValue, setInputValue] = useState('')
-  const [searchData, setSearchData] = useState<MovieAPIRes>()
-  const [filterData, setFilterData] = useState<SearchAPIRes[]>()
-
-  useEffect(() => {
-    // api
-    // getMovieListApi({
-    //   s: 'iron man',
-    //   page: 1,
-    // }).then((res) => {
-    //   setSearchData(res.data)
-    // })
-
-    // mock
-    setSearchData(MOCK_DATA)
-  }, [])
+  const [inputValue, setInputValue] = useState<string>('')
+  const [searchData, setSearchData] = useState<SearchAPIRes[]>()
 
   const HandleInputValueSave = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.currentTarget.value)
@@ -32,8 +18,15 @@ const Search = () => {
   const InputValueSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
 
-    const searchResult = searchData?.Search.filter((el) => el.Title.match(new RegExp(inputValue, 'i')))
-    setFilterData(searchResult)
+    // getMovieListApi({
+    //   s: inputValue,
+    //   page: 1,
+    // })
+    //   .then((res) => res.data)
+    //   .then((res) => setSearchData(res.Search))
+
+    setSearchData(MOCK_DATA.Search)
+
     setInputValue('')
   }
 
@@ -48,19 +41,22 @@ const Search = () => {
         </form>
       </div>
       <div className={styles.listWrap}>
-        {filterData?.length ? (
-          filterData.map(({ Title, Year, Type, imdbID, Poster }) => (
-            <ul className={styles.succeedWrap} key={imdbID}>
-              <li>
-                <div
-                  style={{ width: '100px', height: '100px', backgroundImage: `url(${Poster}) center center no-repeat` }}
-                />
-                <span>{Title}</span>
-                <span>{Year}</span>
-                <span>{Type}</span>
+        {searchData?.length ? (
+          <ul className={styles.succeedWrap}>
+            {searchData.map(({ Title, Year, Type, imdbID, Poster }) => (
+              <li key={imdbID}>
+                <button type='button' onClick={() => alert('하이1')}>
+                  <img src={Poster} alt={Title} />
+                  <span>{Title}</span>
+                  <span>{Year}</span>
+                  <span>{Type}</span>
+                </button>
+                <button type='button' onClick={() => alert('하이2')}>
+                  <StarIcon />
+                </button>
               </li>
-            </ul>
-          ))
+            ))}
+          </ul>
         ) : (
           <div className={styles.failWrap}>
             <span className={styles.fail}>검색 결과가 없습니다.</span>
