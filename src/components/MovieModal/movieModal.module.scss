@@ -78,20 +78,16 @@
         align-items: center;
         flex-direction: column;
 
-        .heartIcon,
+        .starIcon,
         .closeIcon {
           width: 28px;
           height: 28px;
-          padding: 3px;
+          padding: 4px;
           margin-bottom: 7px;
           fill: colors.$GRAY7C;
           cursor: pointer;
-          border: 1px solid colors.$GRAY7C;
+          border: 2px solid colors.$GRAY7C;
           border-radius: 50%;
-        }
-
-        .heartIcon {
-          padding: 6px 0 4px 0;
         }
 
         .detailTitle {

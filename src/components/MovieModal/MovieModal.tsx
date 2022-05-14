@@ -1,7 +1,7 @@
 import { ModalFunction } from 'types/movie.d'
 
 import styles from './movieModal.module.scss'
-import { CloseIcon, HeartIcon } from 'assets/svgs'
+import { CloseIcon, StarIcon } from 'assets/svgs'
 
 const MovieModal = ({ movieDesc, HandleOpenModal }: ModalFunction) => {
   const { Poster, Title, Year, Type } = movieDesc
@@ -20,7 +20,7 @@ const MovieModal = ({ movieDesc, HandleOpenModal }: ModalFunction) => {
             <li key={el.id}>
               <div className={styles.detailBtnWrap}>
                 {el.icon === 'bookmark' ? (
-                  <HeartIcon className={styles.heartIcon} />
+                  <StarIcon className={styles.starIcon} />
                 ) : (
                   <CloseIcon className={styles.closeIcon} onClick={HandleOpenModal} />
                 )}
