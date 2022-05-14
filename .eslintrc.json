@@ -4,7 +4,8 @@
     "airbnb/hooks",
     "react-app",
     "prettier",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
   ],
   "env": { // 사전 정의된 전역 변수 사용을 정의
     "browser": true,

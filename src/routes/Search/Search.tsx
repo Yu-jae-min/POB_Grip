@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from 'react'
+import { useState, ChangeEvent, FormEvent, useEffect, useCallback } from 'react'
 import store from 'store'
 
 import MovieList from 'components/MovieList/MovieList'
@@ -33,17 +33,33 @@ const Search = () => {
     //   .then((res) => setSearchData(res.Search))
 
     setSearchData(MOCK_DATA.Search)
-
     setInputValue('')
   }
 
-  const SaveMovieToLocalStorage = (movie: any) => {
-    const abc = bookmarkData.filter((el) => el.Title !== movie.Title)
+  const AddMovieList = (movie: SearchAPIRes) => {
+    const checkedMovieData = bookmarkData.find(({ imdbID }) => imdbID === movie.imdbID)
+      ? bookmarkData
+      : [...bookmarkData, movie]
 
-    setBookmarkData([...abc, movie])
-
-    store.set('bookmark', bookmarkData)
+    setBookmarkData(checkedMovieData)
+    store.set('bookMark', checkedMovieData)
   }
+
+  const DeleteMovieList = (movie: SearchAPIRes) => {
+    const filterMovieData = store.get('bookMark').filter((movieList: any) => movieList.imdbID !== movie.imdbID)
+
+    setBookmarkData(filterMovieData)
+    store.set('bookMark', filterMovieData)
+  }
+
+  const HandleLocalStorageData = (movie: SearchAPIRes, event: any) => {
+    event.currentTarget.name === 'UnActive' ? AddMovieList(movie) : DeleteMovieList(movie)
+  }
+
+  useEffect(() => {
+    const saved = store.get('bookMark')
+    setBookmarkData(saved)
+  }, [])
 
   return (
     <main className={styles.searchWrap}>
@@ -59,7 +75,7 @@ const Search = () => {
         {searchData?.length ? (
           <ul className={styles.succeedWrap}>
             {searchData.map((movie) => (
-              <MovieList key={movie.imdbID} movieDesc={movie} />
+              <MovieList key={movie.imdbID} movieDesc={movie} HandleLocalStorageData={HandleLocalStorageData} />
             ))}
           </ul>
         ) : (

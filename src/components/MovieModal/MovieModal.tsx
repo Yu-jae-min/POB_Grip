@@ -1,10 +1,18 @@
-import { ModalFunction } from 'types/movie.d'
+import { useRecoilState } from 'recoil'
+import { bookMarkList } from 'states/movie'
+
+import { ModalOpenProps, SearchAPIRes } from 'types/movie.d'
 
 import styles from './movieModal.module.scss'
 import { CloseIcon, StarIcon } from 'assets/svgs'
 
-const MovieModal = ({ movieDesc, HandleOpenModal }: ModalFunction) => {
+const MovieModal = ({ movieDesc, HandleOpenModal, HandleLocalStorageData }: ModalOpenProps) => {
   const { Poster, Title, Year, Type } = movieDesc
+  const [bookmarkData, setBookmarkData] = useRecoilState(bookMarkList)
+
+  const BookmarkCheck = (movie: SearchAPIRes) => {
+    return bookmarkData.find(({ imdbID }) => imdbID === movie.imdbID)
+  }
 
   return (
     <div className={styles.modalWrap}>
@@ -16,18 +24,27 @@ const MovieModal = ({ movieDesc, HandleOpenModal }: ModalFunction) => {
         </dl>
         <img src={Poster} alt={Title} className={styles.modalMovieImg} />
         <ul className={styles.detailMenuWrap}>
-          {MENU_LIST.map((el) => (
-            <li key={el.id}>
-              <div className={styles.detailBtnWrap}>
-                {el.icon === 'bookmark' ? (
-                  <StarIcon className={styles.starIcon} />
-                ) : (
-                  <CloseIcon className={styles.closeIcon} onClick={HandleOpenModal} />
-                )}
-                <span className={styles.detailTitle}>{el.title}</span>
-              </div>
-            </li>
-          ))}
+          <li className={styles.detailBtnWrap}>
+            <div className={styles.detailBtn}>
+              <button
+                className={styles.bookmarkBtnWrap}
+                type='button'
+                name={BookmarkCheck(movieDesc) ? 'Active' : 'UnActive'}
+                onClick={(e) => HandleLocalStorageData(movieDesc, e)}
+              >
+                <StarIcon className={BookmarkCheck(movieDesc) ? styles.starIcon : styles.starIconNone} />
+                <span className={styles.detailTitle}>{BookmarkCheck(movieDesc) ? '즐겨찾기 제거' : '즐겨찾기'}</span>
+              </button>
+            </div>
+          </li>
+          <li className={styles.detailBtnWrap}>
+            <div className={styles.detailBtn}>
+              <button className={styles.bookmarkBtnWrap} type='button' onClick={HandleOpenModal}>
+                <CloseIcon className={styles.closeIcon} />
+                <span className={styles.detailTitle}>취소</span>
+              </button>
+            </div>
+          </li>
         </ul>
       </div>
       <div className={styles.modalBg} />
@@ -36,8 +53,3 @@ const MovieModal = ({ movieDesc, HandleOpenModal }: ModalFunction) => {
 }
 
 export default MovieModal
-
-const MENU_LIST = [
-  { id: 1, title: '즐겨찾기', icon: 'bookmark' },
-  { id: 2, title: '취소', icon: 'close' },
-]

@@ -74,25 +74,57 @@
       border-top: 1px solid colors.$GRAY7C;
 
       .detailBtnWrap {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+        width: 100%;
 
-        .starIcon,
-        .closeIcon {
-          width: 28px;
-          height: 28px;
-          padding: 4px;
-          margin-bottom: 7px;
-          fill: colors.$GRAY7C;
-          cursor: pointer;
-          border: 2px solid colors.$GRAY7C;
-          border-radius: 50%;
-        }
+        .detailBtn {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
 
-        .detailTitle {
-          color: colors.$WHITE;
+          .bookmarkBtnWrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 3px;
+
+            .starIconNone,
+            .closeIcon {
+              width: 28px;
+              height: 28px;
+              padding: 4px;
+              margin-bottom: 7px;
+              fill: colors.$GRAY7C;
+              cursor: pointer;
+              border: 2px solid colors.$GRAY7C;
+              border-radius: 50%;
+            }
+
+            .detailTitle {
+              color: colors.$WHITE;
+            }
+
+            .starIcon {
+              width: 28px;
+              height: 28px;
+              padding: 4px;
+              margin-bottom: 7px;
+              fill: colors.$HOTPINK;
+              cursor: pointer;
+              border: 2px solid colors.$HOTPINK;
+              border-radius: 50%;
+            }
+          }
         }
+      }
+
+      .detailBtnWrap:first-child {
+        padding-left: 10px;
+      }
+
+      .detailBtnWrap:last-child {
+        padding-right: 10px;
       }
     }
   }

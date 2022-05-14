@@ -51,12 +51,28 @@
     }
   }
 
-  .starIcon {
-    width: 25px;
-    height: 25px;
-    border: 2px solid #7c7c7c;
-    border-radius: 50%;
-    padding: 3px;
-    fill: colors.$GRAY7C;
+  .bookmarkBtnWrap {
+    display: flex;
+    margin-top: 3px;
+
+    .starIcon {
+      width: 25px;
+      height: 25px;
+      border: 2px solid colors.$HOTPINK;
+      border-radius: 50%;
+      padding: 3px;
+      fill: colors.$HOTPINK;
+      cursor: pointer;
+    }
+
+    .starIconNone {
+      width: 25px;
+      height: 25px;
+      border: 2px solid colors.$GRAY7C;
+      border-radius: 50%;
+      padding: 3px;
+      fill: colors.$GRAY7C;
+      cursor: pointer;
+    }
   }
 }
