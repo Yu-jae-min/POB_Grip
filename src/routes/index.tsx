@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import styles from './routes.module.scss'
 import Search from 'routes/Search/Search'
-import Favorite from 'routes/Favorite/Favorite'
+import BookMark from 'routes/BookMark/BookMark'
 import TabMenu from 'components/TabMenu/TabMenu'
 
 const App = () => {
@@ -14,8 +14,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path='/' element={<Search />} />
-              <Route path='favorite' element={<Favorite />} />
-              <Route path='*' element={<div>404</div>} />
+              <Route path='bookmark' element={<BookMark />} />
             </Routes>
             <TabMenu />
           </BrowserRouter>

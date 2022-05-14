@@ -1,11 +1,11 @@
 @use '/src/styles/constants/colors';
 
-.searchWrap {
+.bookmarkWrap {
   height: 100%;
   padding: 110px 0 115px 0;
   overflow-y: scroll;
 
-  .inputWrap {
+  .titleWrap {
     display: flex;
     align-items: center;
     position: absolute;
@@ -16,13 +16,14 @@
     background-color: colors.$BLACK;
     border-bottom: 1px solid colors.$GRAY7C;
 
-    form {
+    .title {
       display: flex;
+      justify-content: center;
       align-items: center;
       width: 100%;
       height: 40px;
-      padding: 0 10px;
       background-color: colors.$GRAY26;
+      color: colors.$WHITE;
       border-radius: 5px;
 
       .submitBtn {

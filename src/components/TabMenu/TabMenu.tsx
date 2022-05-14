@@ -30,5 +30,5 @@ export default TabMenu
 
 const MENU_LIST = [
   { title: '검색', link: '/', icon: 'search' },
-  { title: '즐겨찾기', link: 'favorite', icon: 'heart' },
+  { title: '즐겨찾기', link: 'bookmark', icon: 'heart' },
 ]
