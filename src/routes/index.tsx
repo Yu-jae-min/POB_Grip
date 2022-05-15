@@ -14,7 +14,6 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Search />} />
               <Route path='bookmark' element={<BookMark />} />
-              <Route path='*' element={<div>404</div>} />
             </Routes>
             <TabMenu />
           </BrowserRouter>
