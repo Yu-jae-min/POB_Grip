@@ -14,7 +14,7 @@ const MovieList = ({ movieDesc, index }: DragAndDropIndex) => {
   const { Poster, Title, Year, Type } = movieDesc
   const [openModal, setOpenModal] = useState<boolean>(false)
   const { HandleLocalStorageData, BookmarkCheck } = useBookmarkList()
-  const { onDragOver, onDragStart, onDragEnd, onDrop } = useDragAndDrop()
+  const { onDragOver, onDragStart, onDragEnd, onDrop } = useDragAndDrop(index)
   const pathName = window.location.pathname
 
   const HandleOpenModal = () => {
@@ -23,7 +23,6 @@ const MovieList = ({ movieDesc, index }: DragAndDropIndex) => {
 
   return (
     <li
-      data-position={index}
       className={styles.movieList}
       draggable={pathName === '/bookmark'}
       onDragStart={onDragStart}

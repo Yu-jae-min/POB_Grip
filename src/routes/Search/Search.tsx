@@ -14,7 +14,6 @@ import { SearchIcon } from 'assets/svgs'
 const Search = () => {
   const [inputValue, setInputValue] = useState<string>('')
   const [searchData, setSearchData] = useRecoilState(SearchList)
-
   const [page, setPage] = useState<number>(1)
   const [loading, setLoading] = useState<boolean>(false)
   const [ref, inView] = useInView()

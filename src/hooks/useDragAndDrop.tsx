@@ -4,33 +4,27 @@ import store from 'store'
 import { useRecoilState } from 'recoil'
 import { bookMarkList } from 'states/movie'
 
-const useDragAndDrop = () => {
+const useDragAndDrop = (index: number) => {
   const [movieList, setMovieList] = useRecoilState(bookMarkList)
-  const [grab, setGrab] = useState<HTMLElement>()
+  const [grab, setGrab] = useState<number>(0)
 
   const onDragOver = (e: DragEvent<HTMLElement>) => {
     e.preventDefault()
   }
 
-  const onDragStart = (e: DragEvent<HTMLElement>) => {
-    setGrab(e.currentTarget)
-    e.currentTarget.classList.add('grabbing')
-    e.dataTransfer.effectAllowed = 'move'
+  const onDragStart = () => {
+    setGrab(index)
   }
 
-  const onDragEnd = (e: DragEvent<HTMLElement>) => {
-    e.currentTarget.classList.remove('grabbing')
-    e.dataTransfer.dropEffect = 'move'
-    setGrab(undefined)
+  const onDragEnd = () => {
+    setGrab(0)
   }
 
-  const onDrop = (e: DragEvent<HTMLElement>) => {
-    // const grabPosition = Number(grab?.dataset.position)
-    // const targetPosition = Number(e.currentTarget.dataset.position)
-    // const list = [...movieList]
-    // list[grabPosition] = list.splice(targetPosition, 1, list[grabPosition])[0]
-    // setMovieList(list)
-    // store.set('bookMark', list)
+  const onDrop = () => {
+    const setList = [...movieList]
+    setList[grab] = setList.splice(index, 1, setList[grab])[0]
+    setMovieList(setList)
+    store.set('bookMark', setList)
   }
 
   return { onDragOver, onDragStart, onDragEnd, onDrop }
