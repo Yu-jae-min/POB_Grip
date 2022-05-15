@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/POB_grip_movie_app/static/css/main.9540a9d9.css",
-    "main.js": "/POB_grip_movie_app/static/js/main.131086a9.js",
+    "main.js": "/POB_grip_movie_app/static/js/main.6011a4e3.js",
     "static/js/787.fa6d28e8.chunk.js": "/POB_grip_movie_app/static/js/787.fa6d28e8.chunk.js",
     "index.html": "/POB_grip_movie_app/index.html",
     "static/media/close.svg": "/POB_grip_movie_app/static/media/close.c39ccb73e95d4c6da2e8a22151f162fd.svg",
@@ -9,11 +9,11 @@
     "static/media/search.svg": "/POB_grip_movie_app/static/media/search.55d530c1351e8e9a884f0ac527be0ac4.svg",
     "static/media/heart.svg": "/POB_grip_movie_app/static/media/heart.a1dc099024d42b93f7c3f67674cbb05d.svg",
     "main.9540a9d9.css.map": "/POB_grip_movie_app/static/css/main.9540a9d9.css.map",
-    "main.131086a9.js.map": "/POB_grip_movie_app/static/js/main.131086a9.js.map",
+    "main.6011a4e3.js.map": "/POB_grip_movie_app/static/js/main.6011a4e3.js.map",
     "787.fa6d28e8.chunk.js.map": "/POB_grip_movie_app/static/js/787.fa6d28e8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9540a9d9.css",
-    "static/js/main.131086a9.js"
+    "static/js/main.6011a4e3.js"
   ]
 }
