@@ -1,11 +1,10 @@
 import { useState, ChangeEvent, FormEvent, useEffect, useCallback } from 'react'
-import store from 'store'
 import { useInView } from 'react-intersection-observer'
 
 import MovieList from 'components/MovieList/MovieList'
 
 import { useRecoilState } from 'recoil'
-import { bookMarkList, SearchList } from 'states/movie'
+import { SearchList } from 'states/movie'
 
 import { getMovieListApi } from 'services/movie'
 
@@ -14,7 +13,6 @@ import { SearchIcon } from 'assets/svgs'
 
 const Search = () => {
   const [inputValue, setInputValue] = useState<string>('')
-  const [bookmarkData, setBookmarkData] = useRecoilState(bookMarkList)
   const [searchData, setSearchData] = useRecoilState(SearchList)
 
   const [page, setPage] = useState<number>(1)
@@ -58,13 +56,6 @@ const Search = () => {
     }
   }, [inView, loading])
 
-  useEffect(() => {
-    if (bookmarkData.length) return
-
-    const saved = store.get('bookMark')
-    setBookmarkData(saved)
-  }, [])
-
   return (
     <main className={styles.searchWrap}>
       <div className={styles.inputWrap}>
@@ -95,3 +86,20 @@ const Search = () => {
 }
 
 export default Search
+
+/*
+  const MOCK_DATA = {
+    Search: [
+      {
+        Title: 'Iron Man: Armored Adventures',
+        Year: '2008–2012',
+        imdbID: 'tt0837143',
+        Type: 'series',
+        Poster:
+          'https://m.media-amazon.com/images/M/MV5BZWNjZTJjZmYtYjhjZS00ZjgwLWFjY2UtMzBlMDkzZmM3M2FiXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg',
+      },
+    ],
+    totalResults: '100',
+    Response: 'True',
+  }
+*/

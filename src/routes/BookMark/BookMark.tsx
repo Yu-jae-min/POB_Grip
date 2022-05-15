@@ -1,6 +1,3 @@
-import { useEffect } from 'react'
-import store from 'store'
-
 import MovieList from 'components/MovieList/MovieList'
 
 import { useRecoilState } from 'recoil'
@@ -10,13 +7,6 @@ import styles from './bookmark.module.scss'
 
 const BookMark = () => {
   const [bookmarkData, setBookmarkData] = useRecoilState(bookMarkList)
-
-  useEffect(() => {
-    if (bookmarkData.length) return
-
-    const saved = store.get('bookMark')
-    setBookmarkData(saved)
-  }, [])
 
   return (
     <main className={styles.bookmarkWrap}>

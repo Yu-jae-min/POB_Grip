@@ -12,7 +12,6 @@ const useBookmarkList = () => {
     const checkedMovieData = bookmarkData.find((list) => list.imdbID === movie.imdbID)
       ? bookmarkData
       : [...bookmarkData, movie]
-
     setBookmarkData(checkedMovieData)
     store.set('bookMark', checkedMovieData)
   }
