@@ -14,7 +14,7 @@ const BookMark = () => {
   useEffect(() => {
     const saved = store.get('bookMark')
     setBookmarkData(saved)
-  }, [])
+  }, [setBookmarkData])
 
   return (
     <main className={styles.bookmarkWrap}>
@@ -24,9 +24,10 @@ const BookMark = () => {
       <div className={styles.listWrap}>
         {bookmarkData?.length ? (
           <ul className={styles.succeedWrap}>
-            {bookmarkData.map((movie) => (
-              <MovieList key={movie.imdbID} movieDesc={movie} />
-            ))}
+            {bookmarkData.map((movie, index) => {
+              const key = `${movie.imdbID}+${index}`
+              return <MovieList key={key} movieDesc={movie} index={index} />
+            })}
           </ul>
         ) : (
           <div className={styles.failWrap}>

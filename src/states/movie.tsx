@@ -5,3 +5,8 @@ export const bookMarkList = atom<SearchAPIRes[]>({
   key: 'bookMarkList',
   default: [],
 })
+
+export const SearchList = atom<SearchAPIRes[]>({
+  key: 'SearchList',
+  default: [],
+})

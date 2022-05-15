@@ -19,3 +19,7 @@ export interface MovieListProps {
 export interface ModalOpenProps extends MovieListProps {
   HandleOpenModal: () => void
 }
+
+export interface DragAndDropIndex extends MovieListProps {
+  index: number
+}

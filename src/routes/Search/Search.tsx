@@ -1,22 +1,25 @@
-import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
+import { useState, ChangeEvent, FormEvent, useEffect, useCallback } from 'react'
 import store from 'store'
+import { useInView } from 'react-intersection-observer'
 
 import MovieList from 'components/MovieList/MovieList'
 
 import { useRecoilState } from 'recoil'
-import { bookMarkList } from 'states/movie'
+import { bookMarkList, SearchList } from 'states/movie'
 
 import { getMovieListApi } from 'services/movie'
-import { SearchAPIRes } from 'types/movie.d'
-import { MOCK_DATA } from 'services/mock'
 
 import styles from './search.module.scss'
 import { SearchIcon } from 'assets/svgs'
 
 const Search = () => {
   const [inputValue, setInputValue] = useState<string>('')
-  const [searchData, setSearchData] = useState<SearchAPIRes[]>()
   const [bookmarkData, setBookmarkData] = useRecoilState(bookMarkList)
+  const [searchData, setSearchData] = useRecoilState(SearchList)
+
+  const [page, setPage] = useState<number>(1)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [ref, inView] = useInView()
 
   const HandleInputValueSave = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.currentTarget.value)
@@ -25,21 +28,40 @@ const Search = () => {
   const InputValueSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
 
-    // getMovieListApi({
-    //   s: inputValue,
-    //   page: 1,
-    // })
-    //   .then((res) => res.data)
-    //   .then((res) => setSearchData(res.Search))
-
-    setSearchData(MOCK_DATA.Search)
-    setInputValue('')
+    getMovieListApi({ s: inputValue, page: 1 })
+      .then((res) => res.data)
+      .then((res) => setSearchData(res.Search))
   }
+
+  const getItems = useCallback(async () => {
+    if (!inputValue) return
+
+    setLoading(true)
+    await getMovieListApi({
+      s: inputValue,
+      page,
+    })
+      .then((res) => res.data)
+      .then((data) => {
+        setSearchData((prev) => [...prev, ...data.Search])
+      })
+    setLoading(false)
+  }, [page])
+
+  useEffect(() => {
+    getItems()
+  }, [getItems])
+
+  useEffect(() => {
+    if (inView && !loading) {
+      setPage((prevState) => prevState + 1)
+    }
+  }, [inView, loading])
 
   useEffect(() => {
     const saved = store.get('bookMark')
     setBookmarkData(saved)
-  }, [])
+  }, [setBookmarkData])
 
   return (
     <main className={styles.searchWrap}>
@@ -54,9 +76,11 @@ const Search = () => {
       <div className={styles.listWrap}>
         {searchData?.length ? (
           <ul className={styles.succeedWrap}>
-            {searchData.map((movie) => (
-              <MovieList key={movie.imdbID} movieDesc={movie} />
-            ))}
+            {searchData.map((movie, index) => {
+              const key = `${movie.imdbID}+${index}`
+              return <MovieList key={key} movieDesc={movie} index={index} />
+            })}
+            <div className={styles.observerTarget} ref={ref} />
           </ul>
         ) : (
           <div className={styles.failWrap}>
