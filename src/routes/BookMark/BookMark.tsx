@@ -12,9 +12,11 @@ const BookMark = () => {
   const [bookmarkData, setBookmarkData] = useRecoilState(bookMarkList)
 
   useEffect(() => {
+    if (bookmarkData.length) return
+
     const saved = store.get('bookMark')
     setBookmarkData(saved)
-  }, [setBookmarkData])
+  }, [])
 
   return (
     <main className={styles.bookmarkWrap}>

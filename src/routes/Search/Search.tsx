@@ -59,9 +59,11 @@ const Search = () => {
   }, [inView, loading])
 
   useEffect(() => {
+    if (bookmarkData.length) return
+
     const saved = store.get('bookMark')
     setBookmarkData(saved)
-  }, [setBookmarkData])
+  }, [])
 
   return (
     <main className={styles.searchWrap}>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, DragEvent } from 'react'
 import store from 'store'
 
 import { useRecoilState } from 'recoil'
@@ -6,28 +6,26 @@ import { bookMarkList } from 'states/movie'
 
 const useDragAndDrop = () => {
   const [movieList, setMovieList] = useRecoilState(bookMarkList)
-  const [grab, setGrab] = useState<any>(null)
+  const [grab, setGrab] = useState<HTMLElement>()
 
-  const onDragOver = (e: any) => {
+  const onDragOver = (e: DragEvent<HTMLElement>) => {
     e.preventDefault()
   }
 
-  const onDragStart = (e: any) => {
-    e.currentTarget.classList.add('grabbing')
-    e.currentTarget.style.opacity = 0.5
-    e.dataTransfer.effectAllowed = 'move'
-    e.dataTransfer.setData('text/html', e.currentTarget)
+  const onDragStart = (e: DragEvent<HTMLElement>) => {
     setGrab(e.currentTarget)
+    e.currentTarget.classList.add('grabbing')
+    e.dataTransfer.effectAllowed = 'move'
   }
 
-  const onDragEnd = (e: any) => {
-    e.target.classList.remove('grabbing')
-    e.target.style.opacity = ''
+  const onDragEnd = (e: DragEvent<HTMLElement>) => {
+    e.currentTarget.classList.remove('grabbing')
     e.dataTransfer.dropEffect = 'move'
+    setGrab(undefined)
   }
 
-  const onDrop = (e: any) => {
-    // const grabPosition = Number(grab.dataset.position)
+  const onDrop = (e: DragEvent<HTMLElement>) => {
+    // const grabPosition = Number(grab?.dataset.position)
     // const targetPosition = Number(e.currentTarget.dataset.position)
     // const list = [...movieList]
     // list[grabPosition] = list.splice(targetPosition, 1, list[grabPosition])[0]
