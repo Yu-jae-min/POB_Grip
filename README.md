@@ -8,6 +8,7 @@
 
 - 기간 : 2022/05/11 ~ 2022/5/15
 - 구성 : 개인 프로젝트
+- URL : https://yu-jae-min.github.io/POB_grip_movie_app/
 
 <br>
 
