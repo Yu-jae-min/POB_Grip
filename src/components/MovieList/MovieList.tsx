@@ -15,6 +15,7 @@ const MovieList = ({ movieDesc, index }: DragAndDropIndex) => {
   const [openModal, setOpenModal] = useState<boolean>(false)
   const { HandleLocalStorageData, BookmarkCheck } = useBookmarkList()
   const { onDragOver, onDragStart, onDragEnd, onDrop } = useDragAndDrop(index)
+  const isActive = BookmarkCheck(movieDesc)
   const pathName = window.location.pathname
 
   const HandleOpenModal = () => {
@@ -41,10 +42,10 @@ const MovieList = ({ movieDesc, index }: DragAndDropIndex) => {
       <button
         className={styles.bookmarkBtnWrap}
         type='button'
-        name={BookmarkCheck(movieDesc) ? 'Active' : 'UnActive'}
+        name={isActive ? 'Active' : 'UnActive'}
         onClick={(e) => HandleLocalStorageData(movieDesc, e)}
       >
-        <StarIcon className={BookmarkCheck(movieDesc) ? styles.starIcon : styles.starIconNone} />
+        <StarIcon className={isActive ? styles.starIcon : styles.starIconNone} />
       </button>
       {openModal && <MovieModal movieDesc={movieDesc} HandleOpenModal={HandleOpenModal} />}
     </li>

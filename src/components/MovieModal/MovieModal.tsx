@@ -8,6 +8,7 @@ import { CloseIcon, StarIcon } from 'assets/svgs'
 const MovieModal = ({ movieDesc, HandleOpenModal }: ModalOpenProps) => {
   const { Poster, Title, Year, Type } = movieDesc
   const { HandleLocalStorageData, BookmarkCheck } = useBookmarkList()
+  const isActive = BookmarkCheck(movieDesc)
 
   return (
     <div className={styles.modalWrap}>
@@ -24,11 +25,11 @@ const MovieModal = ({ movieDesc, HandleOpenModal }: ModalOpenProps) => {
               <button
                 className={styles.bookmarkBtnWrap}
                 type='button'
-                name={BookmarkCheck(movieDesc) ? 'Active' : 'UnActive'}
+                name={isActive ? 'Active' : 'UnActive'}
                 onClick={(e) => HandleLocalStorageData(movieDesc, e)}
               >
-                <StarIcon className={BookmarkCheck(movieDesc) ? styles.starIcon : styles.starIconNone} />
-                <span className={styles.detailTitle}>{BookmarkCheck(movieDesc) ? '즐겨찾기 제거' : '즐겨찾기'}</span>
+                <StarIcon className={isActive ? styles.starIcon : styles.starIconNone} />
+                <span className={styles.detailTitle}>{isActive ? '즐겨찾기 제거' : '즐겨찾기'}</span>
               </button>
             </div>
           </li>
