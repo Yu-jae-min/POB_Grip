@@ -24,7 +24,7 @@
 
 ## 🔧 **기술스택**
 
-- Typescript, React, SASS, recoil
+- Typescript, React, Sass, recoil
 
 <br />
 
