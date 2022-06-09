@@ -1,26 +1,27 @@
 import { NavLink } from 'react-router-dom'
 
-import styles from './tabMenu.module.scss'
 import cn from 'classnames'
 
-import { SearchIcon, HeartIcon } from '../../assets/svgs'
+import styles from './tabMenu.module.scss'
+import { SearchIcon, HeartIcon } from 'assets/svgs'
 
 const TabMenu = () => {
   return (
     <nav className={styles.tabWrap}>
       <ul className={styles.tabMenuWrap}>
-        {MENU_LIST.map((tabMenu) => (
-          <li key={tabMenu.link}>
-            <NavLink to={tabMenu.link} className={({ isActive }) => cn({ [styles.tabActive]: isActive })}>
-              {tabMenu.icon === 'search' ? (
-                <SearchIcon className={styles.searchIcon} />
-              ) : (
-                <HeartIcon className={styles.heartIcon} />
-              )}
-              {tabMenu.title}
-            </NavLink>
-          </li>
-        ))}
+        {MENU_LIST.map((tabMenu) => {
+          const iconName = tabMenu.icon === 'search'
+
+          return (
+            <li key={tabMenu.link}>
+              <NavLink to={tabMenu.link} className={({ isActive }) => cn({ [styles.tabActive]: isActive })}>
+                {iconName && <SearchIcon className={styles.searchIcon} />}
+                {!iconName && <HeartIcon className={styles.heartIcon} />}
+                {tabMenu.title}
+              </NavLink>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )

@@ -12,9 +12,11 @@ import { StarIcon } from 'assets/svgs'
 
 const MovieList = ({ movieDesc, index }: DragAndDropIndex) => {
   const { Poster, Title, Year, Type } = movieDesc
-  const [openModal, setOpenModal] = useState<boolean>(false)
   const { HandleLocalStorageData, BookmarkCheck } = useBookmarkList()
   const { onDragOver, onDragStart, onDragEnd, onDrop } = useDragAndDrop(index)
+
+  const [openModal, setOpenModal] = useState<boolean>(false)
+
   const isActive = BookmarkCheck(movieDesc)
   const pathName = window.location.pathname
 

@@ -1,9 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import { RecoilRoot } from 'recoil'
-import styles from './routes.module.scss'
+
 import Search from 'routes/Search/Search'
 import BookMark from 'routes/BookMark/BookMark'
 import TabMenu from 'components/TabMenu/TabMenu'
+
+import styles from './routes.module.scss'
 
 const App = () => {
   return (

@@ -17,13 +17,13 @@ const useBookmarkList = () => {
   }
 
   const DeleteMovieList = (movie: SearchAPIRes) => {
-    const filterMovieData = store.get('bookMark').filter((movieList: any) => movieList.imdbID !== movie.imdbID)
+    const filterMovieData = store.get('bookMark').filter((movieList: SearchAPIRes) => movieList.imdbID !== movie.imdbID)
 
     setBookmarkData(filterMovieData)
     store.set('bookMark', filterMovieData)
   }
 
-  const HandleLocalStorageData = (movie: SearchAPIRes, event: any) => {
+  const HandleLocalStorageData = (movie: SearchAPIRes, event: React.MouseEvent<HTMLButtonElement>) => {
     event.currentTarget.name === 'UnActive' ? AddMovieList(movie) : DeleteMovieList(movie)
   }
 

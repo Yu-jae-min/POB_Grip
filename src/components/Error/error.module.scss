@@ -1,0 +1,14 @@
+@use '/src/styles/constants/colors';
+
+.failWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 510px;
+
+  .fail {
+    font-size: 18px;
+    color: colors.$WHITE;
+  }
+}

@@ -1,0 +1,20 @@
+@use '/src/styles/constants/colors';
+
+.listWrap {
+  display: flex;
+  flex-direction: column;
+  padding: 0 25px;
+
+  .succeedWrap {
+    display: flex;
+    flex-direction: column;
+
+    .movieList:first-child {
+      margin-top: 0;
+    }
+
+    .movieList:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
