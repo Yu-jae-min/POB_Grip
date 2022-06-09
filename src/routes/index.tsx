@@ -13,7 +13,7 @@ const App = () => {
     <div className={styles.appWrap}>
       <div className={styles.app}>
         <RecoilRoot>
-          <BrowserRouter basename='/POB_grip_movie_app'>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
               <Route path='/' element={<Search />} />
               <Route path='bookmark' element={<BookMark />} />
