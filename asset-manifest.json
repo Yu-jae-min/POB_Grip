@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/POB_Grip/static/css/main.2ed10c7e.css",
-    "main.js": "/POB_Grip/static/js/main.8af4368f.js",
+    "main.js": "/POB_Grip/static/js/main.edb69e80.js",
     "static/js/787.fa6d28e8.chunk.js": "/POB_Grip/static/js/787.fa6d28e8.chunk.js",
     "index.html": "/POB_Grip/index.html",
     "static/media/close.svg": "/POB_Grip/static/media/close.c39ccb73e95d4c6da2e8a22151f162fd.svg",
@@ -9,11 +9,11 @@
     "static/media/search.svg": "/POB_Grip/static/media/search.55d530c1351e8e9a884f0ac527be0ac4.svg",
     "static/media/heart.svg": "/POB_Grip/static/media/heart.a1dc099024d42b93f7c3f67674cbb05d.svg",
     "main.2ed10c7e.css.map": "/POB_Grip/static/css/main.2ed10c7e.css.map",
-    "main.8af4368f.js.map": "/POB_Grip/static/js/main.8af4368f.js.map",
+    "main.edb69e80.js.map": "/POB_Grip/static/js/main.edb69e80.js.map",
     "787.fa6d28e8.chunk.js.map": "/POB_Grip/static/js/787.fa6d28e8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2ed10c7e.css",
-    "static/js/main.8af4368f.js"
+    "static/js/main.edb69e80.js"
   ]
 }
